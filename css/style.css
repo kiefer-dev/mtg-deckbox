@@ -25,6 +25,14 @@ body {
 
 }
 
+img {
+     width: 150px;
+     height: auto;
+}
+img:hover {
+     width: 300px;
+     height: auto;
+}
 
 /******************************************
 /* LAYOUT

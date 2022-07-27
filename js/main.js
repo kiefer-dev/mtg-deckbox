@@ -12,15 +12,18 @@ function getCard() {
       console.log(cardNameInput);
       console.log(data);
 
-      const imageUrls = [];
+      document.querySelector('#cardImages').innerHTML = '';
+
       data.cards.forEach(obj => {
         if (obj.imageUrl) {
-          imageUrls.push(obj.imageUrl);
+          const img = document.createElement('img');
+          img.src = obj.imageUrl;
+          document.querySelector('div').appendChild(img);
         }
       })
 
 
 
-      console.log(imageUrls);
+
     })
 }
