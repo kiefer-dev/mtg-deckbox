@@ -52,9 +52,12 @@ function getCard() {
         // Increment count of results for each valid card found
         resultCount++; 
       })
+
+      // Put result count into the DOM in #numberOfResults
+      resultCount >= 100
+        ? document.getElementById('numberOfResults').innerText = "100+ results found, please be more specific!"
+        : document.getElementById('numberOfResults').innerText = `${resultCount} results found`;
       
-      // Put amount of results into the DOM
-      document.getElementById('numberOfResults').innerText = `${resultCount} results found`;
 
     })
 }
