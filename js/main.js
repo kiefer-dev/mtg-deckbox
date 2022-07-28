@@ -9,8 +9,8 @@ function getCard() {
   const nameOrSubtype = document.getElementById('selectNameOrSubtype').value;
   // Take the input search term and sanitize it for API use
   const inputSearch = document.getElementById('inputCardSearch').value.split(" ").join("%20");
-  // Create the fetch url
-  const url = `https://api.magicthegathering.io/v1/cards?${nameOrSubtype}=${inputSearch}`;
+  // Create the fetch url to search for cards with the supplied name/subtype and that contains a card image.
+  const url = `https://api.magicthegathering.io/v1/cards?${nameOrSubtype}=${inputSearch}&contains=imageUrl`;
   // Store the Converted Mana Cost selection
   const cmcSelection = document.getElementById('selectCMC').value;
   // Clear the results list on button click
@@ -21,14 +21,14 @@ function getCard() {
   fetch(url)
     .then(res => res.json()) //parse response as JSON
     .then(data => {
-      // Store all found cards with images and CMC 10+ into resultArray
+      // Store all found cards with CMC 10+ into resultArray
       if (cmcSelection === '10+') {
-        resultArray = data.cards.filter(card => card.imageUrl && card.cmc >= 10) 
+        resultArray = data.cards.filter(card => card.cmc >= 10) 
       } else {
         // Store all found cards with images and selected CMC into resultArray
         cmcSelection
-          ? resultArray = data.cards.filter(card => card.imageUrl && card.cmc == cmcSelection)
-          : resultArray = data.cards.filter(card => card.imageUrl)
+          ? resultArray = data.cards.filter(card => card.cmc == cmcSelection)
+          : resultArray = data.cards;
       }
 
       console.log(inputSearch);
