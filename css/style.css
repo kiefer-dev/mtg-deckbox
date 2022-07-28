@@ -22,7 +22,9 @@
 /*******************************************/
 
 body {
-
+     display: flex;
+     flex-flow: column;
+     gap: 50px;
 }
 
 img {
@@ -30,8 +32,20 @@ img {
      height: auto;
 }
 img:hover {
-     width: 300px;
+     width: 250px;
      height: auto;
+}
+
+#cardImages {
+     display: flex;
+     flex-flow: row wrap;
+     align-items: center;
+     justify-content: center;
+     row-gap: 100px;
+     column-gap: 20px;
+     
+     width: 90%;
+     border: 1px solid black;
 }
 
 /******************************************

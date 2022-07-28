@@ -14,13 +14,22 @@
 	</head>
 	<body>
 
-		<h1>Search for Card Name</h1>
-		<input type="text" id="inputCardName" placeholder="card name">
-		<button type="button" id="buttonCardSearch">Get Card Data</button>
+		<section id="searchArea">
+			<h2>search for a card</h2>
+			<select name="nameOrSubtype" id="selectNameOrSubtype" required>
+				<option value="name">search by name</option>
+				<option value="subtypes">search by subtype</option>
+			</select>
+			<input type="text" id="inputCardSearch" placeholder="">
+			<button type="button" id="buttonCardSearch">Get Card Data</button>
 
-		<div id="cardImages">
+			<h3 id="numberOfResults"></h3>
+		</section>
+		
 
-		</div>
+		<section id="cardImages">
+
+		</section>
 
 
 		<script type="text/javascript" src="js/main.js"></script>
