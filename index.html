@@ -14,9 +14,16 @@
 	</head>
 	<body>
 
-		<section id="searchArea">
+		<!-- Intro section with website title -->
+		<section class="intro">
+			<h1>Magic: The Gathering Deckbox</h1>
+			<h4>Like the dusty old shoebox in your closet, but a little less dusty</h4>
+		</section>
+
+		<!-- Section to search for a card -->
+		<section class="searchArea">
 			<h2>search for a card</h2>
-			<div id="searchOptions">
+			<div class="searchOptions">
 				search by:
 				<select name="nameOrSubtype" id="selectNameOrSubtype" class ="search" required>
 					<option value="name">name</option>
@@ -38,19 +45,28 @@
 					<option value="9">9 mana</option>
 					<option value="10+">10+ mana</option>
 				</select>
+				<br/>
+				<input type="checkbox" id="black" name="filterByColor" value="black" checked>
+				<label for="black">black</label>
+				<input type="checkbox" id="white" name="filterByColor" value="white" checked>
+				<label for="white">white</label>
+				<input type="checkbox" id="red" name="filterByColor" value="red" checked>
+				<label for="red">red</label>
+				<input type="checkbox" id="green" name="filterByColor" value="green" checked>
+				<label for="green">green</label>
+				<input type="checkbox" id="blue" name="filterByColor" value="blue" checked>
+				<label for="blue">blue</label>
 			</div>
 			
 			<input type="text" id="inputCardSearch" placeholder="">
-			<button type="button" id="buttonCardSearch">Get Card Data</button>
+			<button type="submit" id="buttonCardSearch">Get Card Data</button>
 			
 
 			<h3 id="numberOfResults"></h3>
 		</section>
 		
-
-		<section id="cardImages">
-			
-		</section>
+		<!-- Section to display cards -->
+		<section class="cardImages"></section>
 
 
 		<script type="text/javascript" src="js/main.js"></script>

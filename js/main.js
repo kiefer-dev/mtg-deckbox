@@ -12,13 +12,22 @@ function getCard() {
   const inputSearch = document.getElementById('inputCardSearch').value.split(" ").join("%20");
 
   // Create the fetch url to search for cards with the supplied name/subtype and that contains a card image.
-  const url = `https://api.magicthegathering.io/v1/cards?${nameOrSubtype}=${inputSearch}&contains=imageUrl`;
+  let url = `https://api.magicthegathering.io/v1/cards?${nameOrSubtype}=${inputSearch}&contains=imageUrl&colors=`;
+  // Add the colors to the end of the above url
+  let colorArray = ["black", "white", "red", "green", "blue"];
+  colorArray.forEach(color => {
+    if (document.getElementById(`${color}`).checked = true) {
+      url += `${color}|`
+    }
+  })
+  console.log(url);
+
 
   // Store the Converted Mana Cost selection
   const cmcSelection = document.getElementById('selectCMC').value;
 
   // Clear the results list on button click
-  document.querySelector('#cardImages').innerHTML = '';
+  document.querySelector('.cardImages').innerHTML = '';
 
   // Clear the results count on button click
   resultCount = 0;
@@ -47,7 +56,7 @@ function getCard() {
         img.src = card.imageUrl; 
 
         // Add the card image to the DOM in the #cardImages section
-        document.querySelector('#cardImages').appendChild(img); 
+        document.querySelector('.cardImages').appendChild(img); 
 
         // Increment count of results for each valid card found
         resultCount++; 
@@ -60,19 +69,4 @@ function getCard() {
       
 
     })
-}
-
-
-
-function filter() {
-  const cmcSelection = document.getElementById('selectCMC').value;
-  let resultArrayFiltered;
-
-  if (cmcSelection === '10+') {
-    resultArrayFiltered = resultArray.filter(card => card.cmc >= 10);
-  } else {
-    resultArrayFiltered = resultArray.filter(card => card.cmc == cmcSelection)
-  }
-  
-  console.log(resultArrayFiltered)
 }

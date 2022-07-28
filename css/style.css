@@ -28,8 +28,31 @@ body {
      gap: 50px;
 }
 
-#searchOptions {
+.intro {
+     flex-flow: column wrap;
+     row-gap: 0px;
+}
+
+.searchArea {
+     /* row-gap: 0px; */
+     gap: 0px 20px;
+}
+.searchOptions {
      text-align: center;
+}
+.cardImages {
+     width: 90%;
+     row-gap: 100px;
+     column-gap: 20px;
+}
+
+section {
+     display: flex;
+     flex-flow: row wrap;
+     align-items: center;
+     justify-content: center;
+     
+     border: 1px solid black;
 }
 
 img {
@@ -42,18 +65,7 @@ img:hover {
      height: auto; */
 }
 
-section {
-     display: flex;
-     flex-flow: row wrap;
-     align-items: center;
-     justify-content: center;
-     row-gap: 100px;
-     column-gap: 20px;
-     
-     width: 90%;
-     height: 100%;
-     border: 1px solid black;
-}
+
 
 /******************************************
 /* LAYOUT
