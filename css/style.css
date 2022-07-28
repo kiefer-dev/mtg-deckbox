@@ -39,6 +39,7 @@ body {
 }
 .searchOptions {
      text-align: center;
+     line-height: 30px;
 }
 .cardImages {
      width: 90%;

@@ -16,7 +16,7 @@ function getCard() {
   // Add the colors to the end of the above url
   let colorArray = ["black", "white", "red", "green", "blue"];
   colorArray.forEach(color => {
-    if (document.getElementById(`${color}`).checked = true) {
+    if (document.getElementById(`${color}`).checked === true) {
       url += `${color}|`
     }
   })
