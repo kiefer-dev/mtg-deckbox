@@ -24,7 +24,12 @@
 body {
      display: flex;
      flex-flow: column;
+     align-items: center;
      gap: 50px;
+}
+
+#searchOptions {
+     text-align: center;
 }
 
 img {
@@ -32,11 +37,12 @@ img {
      height: auto;
 }
 img:hover {
-     width: 250px;
-     height: auto;
+     transform: scale(1.5);
+     /* width: 250px;
+     height: auto; */
 }
 
-#cardImages {
+section {
      display: flex;
      flex-flow: row wrap;
      align-items: center;
@@ -45,6 +51,7 @@ img:hover {
      column-gap: 20px;
      
      width: 90%;
+     height: 100%;
      border: 1px solid black;
 }
 
