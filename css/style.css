@@ -34,15 +34,26 @@ body {
 }
 
 .searchArea {
-     /* row-gap: 0px; */
      gap: 0px 20px;
 }
 .searchOptions {
      text-align: center;
      line-height: 30px;
 }
-.cardImages {
-     width: 90%;
+
+/* Bottom section of page where cards are displayed and added */
+#cardAddArea {
+     display: flex;
+     flex-flow: row nowrap;
+     align-items: flex-start;
+     width: 95%;
+     border: 2px solid red;
+}
+#cardAddInputArea {
+     display: flex;
+     max-width: 200px;
+}
+#cardImageArea {
      row-gap: 100px;
      column-gap: 20px;
 }
@@ -82,3 +93,7 @@ footer {
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/
+
+.hidden {
+     visibility: hidden;
+}

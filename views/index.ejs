@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    	<meta charset="utf-8">
+    	<meta name="description" content="Your description goes here">
+    	<meta name="keywords" content="one, two, three">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>M:tG Deckbox!</title>
+
+		<!-- external CSS link -->
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+
+		<!-- Intro section with website title -->
+		<section class="intro">
+			<h1>Magic: The Gathering Deckbox</h1>
+			<h4>Like the dusty old shoebox in your closet, but a little less dusty</h4>
+		</section>
+
+		<!-- Section to search for a card -->
+		<section class="searchArea">
+			<h2>search for a card</h2>
+			<div class="searchOptions">
+				search by:
+				<select name="nameOrSubtype" id="selectNameOrSubtype" class ="search" required>
+					<option value="name">name</option>
+					<option value="subtypes">subtype</option>
+				</select>
+				<br/>
+				converted mana cost:
+				<select name="filterByCMC" id="selectCMC" class="search">
+					<option value="">any</option>
+					<option value="0">0 mana</option>
+					<option value="1">1 mana</option>
+					<option value="2">2 mana</option>
+					<option value="3">3 mana</option>
+					<option value="4">4 mana</option>
+					<option value="5">5 mana</option>
+					<option value="6">6 mana</option>
+					<option value="7">7 mana</option>
+					<option value="8">8 mana</option>
+					<option value="9">9 mana</option>
+					<option value="10+">10+ mana</option>
+				</select>
+				<br/>
+				<input type="checkbox" id="black" name="filterByColor" value="black" checked>
+				<label for="black">black | </label>
+				<input type="checkbox" id="white" name="filterByColor" value="white" checked>
+				<label for="white">white | </label>
+				<input type="checkbox" id="red" name="filterByColor" value="red" checked>
+				<label for="red">red | </label>
+				<input type="checkbox" id="green" name="filterByColor" value="green" checked>
+				<label for="green">green | </label>
+				<input type="checkbox" id="blue" name="filterByColor" value="blue" checked>
+				<label for="blue">blue | </label>
+				<input type="button" id="colorless" value="colorless">
+			</div>
+			
+			<input type="text" id="inputCardSearch" placeholder="">
+			<button type="submit" id="buttonCardSearch">Get Card Data</button>
+			
+
+			<h3 id="numberOfResults"></h3>
+		</section>
+
+		<!-- Section for the POST form to add cards to deck -->
+		<!-- This is a work in progress and currently is a proof of concept -->
+		<section>
+			<form action="/deck" method="POST">
+				<select name="deckID" id="deckNumberSelect">
+					<option value="deck1">Deck 1</option>
+					<option value="deck2">Deck 2</option>
+				</select>
+				<input type="text" placeholder="cardID" name="cardID">
+				<button type="submit">Add Card</button>
+			</form>
+		</section>
+		
+		<!-- Section to display cards -->
+		<section class="cardImages"></section>
+
+
+		<script type="text/javascript" src="js/main.js"></script>
+	</body>
+</html>

@@ -27,7 +27,7 @@ function getCard() {
   const cmcSelection = document.getElementById('selectCMC').value;
 
   // Clear the results list on button click
-  document.querySelector('.cardImages').innerHTML = '';
+  document.querySelector('#cardImageArea').innerHTML = '';
 
   // Clear the results count on button click
   resultCount = 0;
@@ -53,6 +53,9 @@ function getCard() {
       console.log(inputSearch);
       console.log(resultArray);
 
+      // Remove the .hidden class from the cardAddArea
+      document.querySelector('#cardAddArea').classList.remove('hidden');
+
       resultArray.forEach(card => {
         // Create image element to add to DOM
         const img = document.createElement('img'); 
@@ -61,7 +64,7 @@ function getCard() {
         img.src = card.imageUrl; 
 
         // Add the card image to the DOM in the #cardImages section
-        document.querySelector('.cardImages').appendChild(img); 
+        document.querySelector('#cardImageArea').appendChild(img); 
 
         // Increment count of results for each valid card found
         resultCount++; 

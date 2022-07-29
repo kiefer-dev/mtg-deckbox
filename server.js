@@ -16,9 +16,9 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
 
     // Tell Express that we're using EJS as the template engine
     app.set('view engine', 'ejs');
-    
     // Activate body-parser to parse text submitted in the html form
     app.use(bodyParser.urlencoded({ extended: true }));
+
 
     // READ / GET
     // When requesting the root directory, serve the main page (/index.html)
@@ -26,13 +26,12 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
       // Create an array with each of the cards in the collection
       db.collection('cards').find().toArray()
         .then(results => {
-          console.log(results)
+          res.render('index.ejs', { cards: results }); //render the results of the cards into index.ejs
         })
         .catch(error => console.error(error));
-
-      // Go back to the homepage after adding the card to the collection
-      res.sendFile(__dirname + '/index.html'); // __dirname is the current directory
+      res.render('index.ejs'), {}; //render the index.ejs file
     })
+
 
     // CREATE / POST
     // When you click the Add Card button, insert the specified card (deckID and cardID) into the cardCollection MongoDB collection
