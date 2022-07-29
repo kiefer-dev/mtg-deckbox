@@ -66,6 +66,7 @@
 			<h3 id="numberOfResults"></h3>
 		</section>
 
+    <!--Bottom portion of page where cards get added to deck -->
 		<section id="cardAddArea" class="hidden">
 			<!-- Section for the POST form to add cards to deck -->
 			<!-- This is a work in progress and currently is a proof of concept -->
@@ -78,6 +79,20 @@
 					<input type="text" placeholder="cardID" name="cardID">
 					<button type="submit">Add Card</button>
 				</form>
+
+        <!-- Display deck results -->
+        <h2>Deck Contents</h2>
+        <ul class="cards">
+          <!-- Loop through cards -->
+          <% for(let i = 0; i < cards.length; i++) {%>
+            <li class="card">
+              <!-- Output deckID from iterated card object -->
+              <span><%= cards[i].deckID %></span>
+              <!-- Output cardID from iterated card object -->
+              <span><%= cards[i].cardID %></span>
+            </li>
+          <% } %>
+        </ul>
 			</section>
 			
 			<!-- Section to display cards -->

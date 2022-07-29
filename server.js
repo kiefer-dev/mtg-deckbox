@@ -29,7 +29,6 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
           res.render('index.ejs', { cards: results }); //render the results of the cards into index.ejs
         })
         .catch(error => console.error(error));
-      res.render('index.ejs'), {}; //render the index.ejs file
     })
 
 
