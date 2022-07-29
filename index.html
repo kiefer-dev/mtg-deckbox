@@ -70,6 +70,10 @@
 		<!-- This is a work in progress and currently is a proof of concept -->
 		<section>
 			<form action="/deck" method="POST">
+				<select name="deckID" id="deckNumberSelect">
+					<option value="deck1">Deck 1</option>
+					<option value="deck2">Deck 2</option>
+				</select>
 				<input type="text" placeholder="cardID" name="cardID">
 				<button type="submit">Add Card</button>
 			</form>
