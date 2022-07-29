@@ -46,14 +46,26 @@ body {
      display: flex;
      flex-flow: row nowrap;
      align-items: flex-start;
-     width: 95%;
+     justify-content: center;
+     width: 95vw;
      border: 2px solid red;
 }
 #cardAddInputArea {
      display: flex;
-     max-width: 200px;
+     align-self: start;
+     width: 20%;
+     height: 100%;
+     border: 3px solid blue;
+}
+#cardAddInputArea form {
+     display: flex;
+     flex-flow: column wrap;
+     justify-content: flex-start;
+     /* align-items: stretch; */
+     width: 100%;
 }
 #cardImageArea {
+     width: 80%;
      row-gap: 100px;
      column-gap: 20px;
 }
