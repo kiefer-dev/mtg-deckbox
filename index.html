@@ -65,6 +65,15 @@
 
 			<h3 id="numberOfResults"></h3>
 		</section>
+
+		<!-- Section for the POST form to add cards to deck -->
+		<!-- This is a work in progress and currently is a proof of concept -->
+		<section>
+			<form action="/deck" method="POST">
+				<input type="text" placeholder="cardID" name="cardID">
+				<button type="submit">Add Card</button>
+			</form>
+		</section>
 		
 		<!-- Section to display cards -->
 		<section class="cardImages"></section>

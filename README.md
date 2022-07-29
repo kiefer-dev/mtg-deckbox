@@ -1,2 +1,4 @@
 # mtg-deckbox
-npm install --save mtgsdk
+npm install express --save
+npm install body-parser --save
+npm install mongodb --save
