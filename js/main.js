@@ -75,3 +75,15 @@ function getCard() {
 
     })
 }
+
+
+// Click event on colorless button to clear all other color checkboxes
+document.querySelector('#colorless').addEventListener('click', clearColors);
+// Function that removes checks from all other color boxes
+function clearColors() {
+  document.getElementById('black').checked = false;
+  document.getElementById('white').checked = false;
+  document.getElementById('red').checked = false;
+  document.getElementById('green').checked = false;
+  document.getElementById('blue').checked = false;
+}
