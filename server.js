@@ -12,7 +12,10 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
   .then(client => {
     console.log('Connected to mongoDB!');
     const db = client.db('mtg-deck-saver')
-    const deck1Collection = db.collection('deck1'); //create collection for deck1
+    const cardCollection = db.collection('cards'); //create collection for cards
+
+    // Tell Express that we're using EJS as the template engine
+    app.set('view engine', 'ejs');
     
     // Activate body-parser to parse text submitted in the html form
     app.use(bodyParser.urlencoded({ extended: true }));
@@ -20,7 +23,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
     // READ / GET
     // When requesting the root directory, serve the main page (/index.html)
     app.get('/', (req, res) => {
-      db.collection('deck1').find().toArray()
+      db.collection('cards').find().toArray()
         .then(results => {
           console.log(results)
         })
@@ -31,7 +34,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
 
     // CREATE / POST
     app.post('/deck', (req, res) => {
-      deck1Collection.insertOne(req.body)
+      cardCollection.insertOne(req.body)
         .then(result => {
           res.redirect('/');
         })
