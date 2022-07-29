@@ -45,6 +45,11 @@ function getCard() {
         resultArray = data.cards;
       }
 
+      // If no colors are selected, filter the resultArray to contain only cards without a colors/colorIdentity property
+      if (url[url.length - 1] === '=') {
+        resultArray = resultArray.filter(card => !("colors" in card) && !("colorIdentity" in card))
+      }
+
       console.log(inputSearch);
       console.log(resultArray);
 
