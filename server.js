@@ -16,6 +16,8 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
 
     // Tell Express that we're using EJS as the template engine
     app.set('view engine', 'ejs');
+    // Tell Express that we're looking at the public folder
+    app.use(express.static('public'));
     // Activate body-parser to parse text submitted in the html form
     app.use(bodyParser.urlencoded({ extended: true }));
 

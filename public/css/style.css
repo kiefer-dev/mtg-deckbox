@@ -50,19 +50,23 @@ body {
      width: 95vw;
      border: 2px solid red;
 }
-#cardAddInputArea {
+#cardAddAreaLeft {
      display: flex;
      align-self: start;
      width: 20%;
      height: 100%;
      border: 3px solid blue;
 }
-#cardAddInputArea form {
+#cardAddAreaLeft form {
      display: flex;
      flex-flow: column wrap;
      justify-content: flex-start;
      /* align-items: stretch; */
      width: 100%;
+}
+#cardAddAreaDisplayDeck {
+     display: flex;
+     flex-flow: column wrap;
 }
 #cardImageArea {
      width: 80%;
