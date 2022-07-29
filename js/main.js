@@ -81,9 +81,6 @@ function getCard() {
 document.querySelector('#colorless').addEventListener('click', clearColors);
 // Function that removes checks from all other color boxes
 function clearColors() {
-  document.getElementById('black').checked = false;
-  document.getElementById('white').checked = false;
-  document.getElementById('red').checked = false;
-  document.getElementById('green').checked = false;
-  document.getElementById('blue').checked = false;
+  const colorArray = ['black', 'white', 'red', 'green', 'blue'];
+  colorArray.forEach(color => document.getElementById(`${color}`).checked = false);
 }
