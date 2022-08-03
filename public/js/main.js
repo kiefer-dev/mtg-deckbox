@@ -54,7 +54,7 @@ function getCard() {
       console.log(resultArray);
 
       // Remove the .hidden class from the cardAddArea
-      document.querySelector('#cardAddArea').classList.remove('hidden');
+      document.querySelector('#cardImageArea').classList.remove('hidden');
 
       resultArray.forEach(card => {
         // Create image element to add to DOM
@@ -105,5 +105,24 @@ update.addEventListener('click', _ => {
   })
   .then(response => {
     console.log(response);
+  })
+})
+
+
+// Card Delete button (DELETE request)
+const deleteButton = document.querySelector('#delete-button');
+deleteButton.addEventListener('click', _ => {
+  fetch('/cards', {
+    method: 'delete', //making a DELETE request
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      cardID: 0
+    })
+  })
+  .then(res => {
+    if (res.ok) return res.json();
+  })
+  .then(data => {
+    window.location.reload();
   })
 })

@@ -73,6 +73,22 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
 
 
     //----------------------
+    // DELETE / DELETE
+    app.delete('/cards', (req, res) => {
+      cardCollection.deleteOne(
+        { cardID: req.body.cardID }, //query for the cardID passed from the fetch in main.js
+      )
+      .then(result => {
+        if (result.deletedCount === 0) {
+          return res.json('No card to delete');
+        }
+        res.json('Deleted card with 0 ID')
+      })
+      .catch(error => console.error(error))
+    })
+
+
+    //----------------------
     // Create the server that browsers can connect to
     app.listen(PORT, function() {
       console.log(`listening on ${PORT}`);
