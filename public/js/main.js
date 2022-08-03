@@ -96,8 +96,14 @@ update.addEventListener('click', _ => {
     method: 'put', //making a PUT request
     headers: { 'Content-Type': 'application/json' }, //tell server we're sending JSON data
     body: JSON.stringify({
-      deckID: 'UPDATED',
+      deckID: 'deck1',
       cardID: 0
     })
+  })
+  .then(res => {
+    if (res.ok) return res.json()
+  })
+  .then(response => {
+    console.log(response);
   })
 })

@@ -24,6 +24,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
     app.use(bodyParser.json());
 
 
+    //----------------------
     // READ / GET
     // When requesting the root directory, serve the main page (/index.html)
     app.get('/', (req, res) => {
@@ -36,6 +37,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
     })
 
 
+    //----------------------
     // CREATE / POST
     // When you click the Add Card button, insert the specified card (deckID and cardID) into the cardCollection MongoDB collection
     app.post('/deck', (req, res) => {
@@ -47,11 +49,30 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
     })
 
 
+    //----------------------
     // UPDATE / PUT
     app.put('/cards', (req, res) => {
-      console.log(req.body);
+      cardCollection.findOneAndUpdate(
+        { deckID: 'deck2' },  //query
+        { //update
+          $set: {
+            // Set the deckID and cardID to the ones included in the body of the request made in the button event listener in main.js
+            deckID: req.body.deckID,
+            cardID: req.body.cardID
+          }
+        },
+        { //options
+          upsert: true  //"insert a document if no documents can be updated"
+        }
+      )
+      .then(result => {
+        res.json('Success')
+      })
+      .catch(error => console.error(error))
     })
 
+
+    //----------------------
     // Create the server that browsers can connect to
     app.listen(PORT, function() {
       console.log(`listening on ${PORT}`);
