@@ -77,7 +77,9 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
     // DELETE / DELETE
     app.delete('/cards', (req, res) => {
       cardCollection.deleteOne(
-        { cardID: req.body.cardID }, //query for the cardID passed from the fetch in main.js
+        { 
+          cardID: req.body.cardID 
+        }, //query for the cardID passed from the fetch in main.js
       )
       .then(result => {
         if (result.deletedCount === 0) {

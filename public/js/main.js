@@ -81,12 +81,10 @@ function getCard() {
 
 
 // Click event on colorless button to clear all other color checkboxes
-document.querySelector('#colorless').addEventListener('click', clearColors);
-// Function that removes checks from all other color boxes
-function clearColors() {
+document.querySelector('#colorless').addEventListener('click', _ => {
   const colorArray = ['black', 'white', 'red', 'green', 'blue'];
   colorArray.forEach(color => document.getElementById(`${color}`).checked = false);
-}
+})
 
 
 // Card Update button (PUT request)
@@ -112,17 +110,28 @@ function clearColors() {
 // Card Delete button (DELETE request)
 const deleteButton = document.querySelector('#delete-button');
 deleteButton.addEventListener('click', _ => {
-  fetch('/cards', {
-    method: 'delete', //making a DELETE request
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      cardID: document.querySelector('#deleteCardID').value
+  // Clear delete message field on button press
+  document.querySelector('#deleteMessage').innerText = "";
+  deckID = document.querySelector('#deleteDeckID').value;
+  cardID = document.querySelector('#deleteCardID').value;
+
+  if (deckID && cardID) {
+    fetch('/cards', {
+      method: 'delete', //making a DELETE request
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        'deckID': deckID,
+        'cardID': cardID
+      })
     })
-  })
-  .then(res => {
-    if (res.ok) return res.json();
-  })
-  .then(data => {
-    window.location.reload();
-  })
+    .then(res => {
+      if (res.ok) return res.json();
+    })
+    .then(data => {
+      window.location.reload();
+    })
+  } else {
+    document.querySelector('#deleteMessage').innerText = "Please populate Deck ID and Card ID fields"
+  }
+  
 })
