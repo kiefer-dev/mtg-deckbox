@@ -87,3 +87,17 @@ function clearColors() {
   const colorArray = ['black', 'white', 'red', 'green', 'blue'];
   colorArray.forEach(color => document.getElementById(`${color}`).checked = false);
 }
+
+
+// Card Update button (PUT request)
+const update = document.querySelector('#update-button');
+update.addEventListener('click', _ => {
+  fetch('/cards', {
+    method: 'put', //making a PUT request
+    headers: { 'Content-Type': 'application/json' }, //tell server we're sending JSON data
+    body: JSON.stringify({
+      deckID: 'UPDATED',
+      cardID: 0
+    })
+  })
+})

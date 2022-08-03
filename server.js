@@ -20,6 +20,8 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
     app.use(express.static('public'));
     // Activate body-parser to parse text submitted in the html form
     app.use(bodyParser.urlencoded({ extended: true }));
+    // Tell the server how to read JSON
+    app.use(bodyParser.json());
 
 
     // READ / GET
@@ -42,6 +44,12 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
           res.redirect('/');
         })
         .catch(error => console.error(error))
+    })
+
+
+    // UPDATE / PUT
+    app.put('/cards', (req, res) => {
+      console.log(req.body);
     })
 
     // Create the server that browsers can connect to
