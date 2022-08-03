@@ -90,23 +90,23 @@ function clearColors() {
 
 
 // Card Update button (PUT request)
-const update = document.querySelector('#update-button');
-update.addEventListener('click', _ => {
-  fetch('/cards', {
-    method: 'put', //making a PUT request
-    headers: { 'Content-Type': 'application/json' }, //tell server we're sending JSON data
-    body: JSON.stringify({
-      deckID: 'deck1',
-      cardID: 0
-    })
-  })
-  .then(res => {
-    if (res.ok) return res.json()
-  })
-  .then(response => {
-    console.log(response);
-  })
-})
+// const update = document.querySelector('#update-button');
+// update.addEventListener('click', _ => {
+//   fetch('/cards', {
+//     method: 'put', //making a PUT request
+//     headers: { 'Content-Type': 'application/json' }, //tell server we're sending JSON data
+//     body: JSON.stringify({
+//       deckID: 'deck1',
+//       cardID: 0
+//     })
+//   })
+//   .then(res => {
+//     if (res.ok) return res.json()
+//   })
+//   .then(response => {
+//     console.log(response);
+//   })
+// })
 
 
 // Card Delete button (DELETE request)
@@ -116,7 +116,7 @@ deleteButton.addEventListener('click', _ => {
     method: 'delete', //making a DELETE request
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      cardID: 0
+      cardID: document.querySelector('#deleteCardID').value
     })
   })
   .then(res => {
