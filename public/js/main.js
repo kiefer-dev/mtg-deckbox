@@ -112,10 +112,11 @@ const deleteButton = document.querySelector('#delete-button');
 deleteButton.addEventListener('click', _ => {
   // Clear delete message field on button press
   document.querySelector('#deleteMessage').innerText = "";
+  // Save inputted deckID and cardID
   deckID = document.querySelector('#deleteDeckID').value;
   cardID = document.querySelector('#deleteCardID').value;
 
-  if (deckID && cardID) {
+  if (deckID && cardID) { //if both fields are populated
     fetch('/cards', {
       method: 'delete', //making a DELETE request
       headers: { 'Content-Type': 'application/json' },
@@ -130,7 +131,7 @@ deleteButton.addEventListener('click', _ => {
     .then(data => {
       window.location.reload();
     })
-  } else {
+  } else { //if both fields aren't populated
     document.querySelector('#deleteMessage').innerText = "Please populate Deck ID and Card ID fields"
   }
   
