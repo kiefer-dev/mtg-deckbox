@@ -107,32 +107,59 @@ document.querySelector('#colorless').addEventListener('click', _ => {
 // })
 
 
-// Card Delete button (DELETE request)
-const deleteButton = document.querySelector('#delete-button');
-deleteButton.addEventListener('click', _ => {
-  // Clear delete message field on button press
-  document.querySelector('#deleteMessage').innerText = "";
-  // Save inputted deckID and cardID
-  deckID = document.querySelector('#deleteDeckID').value;
-  cardID = document.querySelector('#deleteCardID').value;
+// DELETE card request
+// Store all delete buttons into array
+const deleteButton = document.querySelectorAll('.fa-trash');
+// Add event listeners to each of the delete buttons
+Array.from(deleteButton).forEach((element) => {
+  element.addEventListener('click', deleteCard);
+})
+// DELETE
+async function deleteCard(){
+  const deckID = this.parentNode.childNodes[3].innerText
+  const cardID = this.parentNode.childNodes[7].innerText
 
-  if (deckID && cardID) { //if both fields are populated
-    fetch('/cards', {
-      method: 'delete', //making a DELETE request
+  try {
+    const response = await fetch('deleteCard', {
+      method: 'delete',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        'deckID': deckID,
-        'cardID': cardID
+        'deckIDFromJS': deckID,
+        'cardIDFromJS': cardID
       })
     })
-    .then(res => {
-      if (res.ok) return res.json();
-    })
-    .then(data => {
-      window.location.reload();
-    })
-  } else { //if both fields aren't populated
-    document.querySelector('#deleteMessage').innerText = "Please populate Deck ID and Card ID fields"
+    const data = await response.json();
+    console.log(data);
+    window.location.reload(true);
+  } catch(err) {
+    console.log(err);
   }
+}
+
+// deleteButton.addEventListener('click', _ => {
+//   // Clear delete message field on button press
+//   document.querySelector('#deleteMessage').innerText = "";
+//   // Save inputted deckID and cardID
+//   deckID = document.querySelector('#deleteDeckID').value;
+//   cardID = document.querySelector('#deleteCardID').value;
+
+//   if (deckID && cardID) { //if both fields are populated
+//     fetch('/cards', {
+//       method: 'delete', //making a DELETE request
+//       headers: { 'Content-Type': 'application/json' },
+//       body: JSON.stringify({
+//         'deckID': deckID,
+//         'cardID': cardID
+//       })
+//     })
+//     .then(res => {
+//       if (res.ok) return res.json();
+//     })
+//     .then(data => {
+//       window.location.reload();
+//     })
+//   } else { //if both fields aren't populated
+//     document.querySelector('#deleteMessage').innerText = "Please populate Deck ID and Card ID fields"
+//   }
   
-})
+// })

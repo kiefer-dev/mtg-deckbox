@@ -75,21 +75,33 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
 
     //----------------------
     // DELETE / DELETE
-    app.delete('/cards', (req, res) => {
-      cardCollection.deleteOne(
-        { 
-          deckID: req.body.deckID,
-          cardID: req.body.cardID 
-        }, //query for the deckID and cardID passed from the fetch in main.js
-      )
-      .then(result => {
-        if (result.deletedCount === 0) {
-          return res.json('No card to delete');
-        }
-        res.json('Deleted card with 0 ID')
+    app.delete('/deleteCard', (req, res) => {
+      db.collection('cards').deleteOne({ 
+        deckID: req.body.deckIDFromJS,
+        cardID: req.body.cardIDFromJS
       })
-      .catch(error => console.error(error))
+      .then(res => {
+        console.log(`Card Deleted`)
+      })
+      .catch(err => console.error(err))
     })
+
+
+    // app.delete('/cards', (req, res) => {
+    //   cardCollection.deleteOne(
+    //     { 
+    //       deckID: req.body.deckID,
+    //       cardID: req.body.cardID 
+    //     }, //query for the deckID and cardID passed from the fetch in main.js
+    //   )
+    //   .then(result => {
+    //     if (result.deletedCount === 0) {
+    //       return res.json('No card to delete');
+    //     }
+    //     res.json('Deleted card with 0 ID')
+    //   })
+    //   .catch(error => console.error(error))
+    // })
 
 
     //----------------------
