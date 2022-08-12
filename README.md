@@ -5,3 +5,4 @@ npm install mongodb --save
 npm install ejs --save
 npm install nodemon --save-dev
   add ["dev": "nodemon server.js"] to scripts in package.json
+npm install dotenv --save

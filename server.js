@@ -1,17 +1,24 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const PORT = 3000;
-
+const MongoClient = require('mongodb').MongoClient;
+const dotenv = require('dotenv') //.env file for config
+dotenv.config({ path: './config/config.env' }) // Load config
+const PORT = process.env.PORT || 3000;
 
 
 // Connect to MongoDB through its connect method
-const MongoClient = require('mongodb').MongoClient;
-const connectionString = 'mongodb+srv://kiefer:weis@cluster0.yhggoed.mongodb.net/?retryWrites=true&w=majority'
-MongoClient.connect(connectionString, { useUnifiedTopology: true })
+let db,
+    dbConnectionStr = process.env.DB_STRING,
+    dbName = 'mtg-deck-saver'
+
+MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
   .then(client => {
-    console.log('Connected to mongoDB!');
-    const db = client.db('mtg-deck-saver')
+    console.log(`Connected to ${dbName} database on MongoDB!`);
+    db = client.db(dbName)
+
+
+
     const cardCollection = db.collection('cards'); //create collection for cards
 
     // Tell Express that we're using EJS as the template engine

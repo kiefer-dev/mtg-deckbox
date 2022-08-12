@@ -130,7 +130,7 @@ async function deleteCard(){
     })
     const data = await response.json();
     console.log(data);
-    window.location.reload(true);
+    window.location.reload(true); //WHY IS THIS NOT WORKING
   } catch(err) {
     console.log(err);
   }
