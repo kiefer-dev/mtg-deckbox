@@ -73,7 +73,7 @@
 			<!-- This is a work in progress and currently is a proof of concept -->
 			<section id="cardAddAreaLeft">
         <section id="cardAddAreaInput">
-          <form action="/deck" method="POST">
+          <form action="/addCard" method="POST">
             <select name="deckID" id="deckNumberSelect">
               <option value="deck1">Deck 1</option>
               <option value="deck2">Deck 2</option>
@@ -98,6 +98,8 @@
               </li>
             <% } %>
           </ul>
+
+					<h5>Cards: <%= cardsCount %></h5>
 
 					<!-- <div>
 						<p>Put the cards in deck2 to deck1</p>

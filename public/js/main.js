@@ -87,25 +87,6 @@ document.querySelector('#colorless').addEventListener('click', _ => {
 })
 
 
-// Card Update button (PUT request)
-// const update = document.querySelector('#update-button');
-// update.addEventListener('click', _ => {
-//   fetch('/cards', {
-//     method: 'put', //making a PUT request
-//     headers: { 'Content-Type': 'application/json' }, //tell server we're sending JSON data
-//     body: JSON.stringify({
-//       deckID: 'deck1',
-//       cardID: 0
-//     })
-//   })
-//   .then(res => {
-//     if (res.ok) return res.json()
-//   })
-//   .then(response => {
-//     console.log(response);
-//   })
-// })
-
 
 // DELETE card request
 // Store all delete buttons into array
@@ -116,21 +97,21 @@ Array.from(deleteButton).forEach((element) => {
 })
 // DELETE
 async function deleteCard(){
-  const deckID = this.parentNode.childNodes[3].innerText
-  const cardID = this.parentNode.childNodes[7].innerText
+  const deckID = this.parentNode.childNodes[3].innerText //store the deckID of the clicked item
+  const cardID = this.parentNode.childNodes[7].innerText //store the cardID of the clicked item
 
   try {
     const response = await fetch('deleteCard', {
       method: 'delete',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        'deckIDFromJS': deckID,
-        'cardIDFromJS': cardID
+        'deckIDFromJS': deckID, //send the deckID as 'deckIDFromJS'
+        'cardIDFromJS': cardID  //send the cardID as 'cardIDFromJS'
       })
     })
     const data = await response.json();
     console.log(data);
-    window.location.reload(true); //WHY IS THIS NOT WORKING
+    location.reload();
   } catch(err) {
     console.log(err);
   }
